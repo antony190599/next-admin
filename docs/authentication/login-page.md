@@ -30,7 +30,7 @@ The `(auth)` folder is a route group that doesn't affect the URL path.
 Create a login page component with email and password fields:
 
 ```tsx
-// app/(auth)/login/page.tsx
+// src/app/(auth)/login/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -149,7 +149,7 @@ export default function LoginPage() {
 Create a login API endpoint to handle authentication:
 
 ```tsx
-// app/api/auth/login/route.ts
+// src/app/api/auth/login/route.ts
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -184,7 +184,7 @@ export async function POST(request: Request) {
 You can create a layout for all authentication pages:
 
 ```tsx
-// app/(auth)/layout.tsx
+// src/app/(auth)/layout.tsx
 export default function AuthLayout({
   children,
 }: {
@@ -205,7 +205,7 @@ export default function AuthLayout({
 Create middleware to protect routes that require authentication:
 
 ```tsx
-// middleware.ts
+// src/middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 

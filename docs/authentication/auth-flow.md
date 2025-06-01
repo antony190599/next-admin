@@ -26,7 +26,7 @@ npm install -D @types/jsonwebtoken @types/bcryptjs
 Create authentication utility functions in `/lib/auth.ts`:
 
 ```typescript
-// lib/auth.ts
+// src/lib/auth.ts
 import { NextRequest } from 'next/server';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
@@ -76,7 +76,7 @@ export function getUserFromRequest(req: NextRequest): UserData | null {
 ### 3. Create Login API Endpoint
 
 ```typescript
-// app/api/auth/login/route.ts
+// src/app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { verifyPassword, generateToken } from '@/lib/auth';
@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
 ### 4. Create Logout API Endpoint
 
 ```typescript
-// app/api/auth/logout/route.ts
+// src/app/api/auth/logout/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
@@ -162,7 +162,7 @@ export async function POST() {
 ### 5. Create Auth Context for Client Components
 
 ```typescript
-// contexts/auth-context.tsx
+// src/contexts/auth-context.tsx
 'use client';
 
 import { createContext, useContext, useState, useEffect } from 'react';
@@ -260,7 +260,7 @@ export const useAuth = () => {
 ### 6. Create "Me" API Endpoint for Session Validation
 
 ```typescript
-// app/api/auth/me/route.ts
+// src/app/api/auth/me/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserFromRequest } from '@/lib/auth';
 
@@ -314,7 +314,7 @@ export default function RootLayout({
 ### 8. Create Protected Route Component
 
 ```typescript
-// components/protected-route.tsx
+// src/components/protected-route.tsx
 'use client';
 
 import { useEffect } from 'react';
@@ -366,7 +366,7 @@ export default function ProtectedRoute({
 ### 9. Use Protection Component in Dashboard Pages
 
 ```typescript
-// app/dashboard/page.tsx
+// src/app/dashboard/page.tsx
 'use client';
 
 import ProtectedRoute from '@/components/protected-route';
