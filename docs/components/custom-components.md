@@ -41,10 +41,10 @@ Follow these steps to create custom components for your admin interface:
 
 Create a new file in the appropriate directory:
 
-- `/components/ui/` for UI components
-- `/components/common/` for shared components
-- `/components/forms/` for form components
-- `/components/dashboard/` for dashboard-specific components
+- `/src/components/ui/` for UI components
+- `/src/components/common/` for shared components
+- `/src/components/forms/` for form components
+- `/src/components/dashboard/` for dashboard-specific components
 
 ### Step 3: Write the Component Code
 
@@ -112,7 +112,7 @@ export function StatsCard({
 Use your custom component in a page or another component:
 
 ```tsx
-// app/dashboard/page.tsx
+// src/app/dashboard/page.tsx
 import { StatsCard } from "@/components/dashboard/stats-card";
 import { Users, DollarSign, ShoppingCart, Activity } from "lucide-react";
 

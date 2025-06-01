@@ -72,7 +72,7 @@ async function getLatestData() {
 Create custom API endpoints in your Next.js app:
 
 ```tsx
-// app/api/users/route.ts
+// src/app/api/users/route.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -171,7 +171,7 @@ export default function ClientDataFetching() {
 Next.js provides Server Actions for handling form submissions and data mutations:
 
 ```tsx
-// app/actions.ts
+// src/app/actions.ts
 'use server';
 
 export async function createUser(formData: FormData) {
@@ -196,7 +196,7 @@ export async function createUser(formData: FormData) {
 Use the server action in a form:
 
 ```tsx
-// app/users/new/page.tsx
+// src/app/users/new/page.tsx
 import { createUser } from '@/app/actions';
 
 export default function NewUserPage() {
@@ -239,7 +239,7 @@ async function fetchProtectedData() {
 For internal API routes, you can use cookies for authentication:
 
 ```tsx
-// app/api/protected/route.ts
+// src/app/api/protected/route.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getUserFromRequest } from '@/lib/auth';
@@ -443,7 +443,7 @@ export interface ApiError {
 Use libraries like Jest and MSW (Mock Service Worker) to test API integration:
 
 ```typescript
-// __tests__/api.test.ts
+// src/__tests__/api.test.ts
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { fetchUsers } from '../lib/api';

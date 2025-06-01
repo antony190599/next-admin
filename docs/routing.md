@@ -11,15 +11,16 @@ Next.js 13+ introduced the App Router, which uses a file-system based router bui
 In the App Router, routes are defined by folders within the `app` directory:
 
 ```
-app/
-├── page.tsx         # Home page (/)
-├── dashboard/       # Dashboard route (/dashboard)
-│   └── page.tsx     # Dashboard page component
-├── users/           # Users route (/users)
-│   ├── page.tsx     # Users list page component
-│   └── [id]/        # Dynamic route for specific user (/users/:id)
-│       └── page.tsx # User details page component
-└── layout.tsx       # Root layout (applies to all pages)
+src/
+└──app/
+    ├── page.tsx         # Home page (/)
+    ├── dashboard/       # Dashboard route (/dashboard)
+    │   └── page.tsx     # Dashboard page component
+    ├── users/           # Users route (/users)
+    │   ├── page.tsx     # Users list page component
+    │   └── [id]/        # Dynamic route for specific user (/users/:id)
+    │       └── page.tsx # User details page component
+    └── layout.tsx       # Root layout (applies to all pages)
 ```
 
 ## Creating New Pages
@@ -50,7 +51,7 @@ This will be accessible at `/about`.
 Create dynamic routes using square brackets notation:
 
 ```tsx
-// app/products/[id]/page.tsx
+// src/app/products/[id]/page.tsx
 export default function ProductPage({ params }: { params: { id: string } }) {
   return <div>Product ID: {params.id}</div>;
 }
@@ -63,7 +64,7 @@ This will match URLs like `/products/123`.
 You can create nested routes by adding subdirectories:
 
 ```tsx
-// app/dashboard/settings/page.tsx
+// src/app/dashboard/settings/page.tsx
 export default function SettingsPage() {
   return <div>Dashboard Settings</div>;
 }
@@ -76,7 +77,7 @@ This will be accessible at `/dashboard/settings`.
 Use layouts to create shared UI for multiple pages:
 
 ```tsx
-// app/dashboard/layout.tsx
+// src/app/dashboard/layout.tsx
 export default function DashboardLayout({
   children,
 }: {
@@ -153,17 +154,18 @@ export default function LoginForm() {
 Create route groups using parentheses in folder names to organize routes without affecting the URL path:
 
 ```
-app/
-├── (auth)/
-│   ├── login/
-│   │   └── page.tsx      # /login
-│   └── register/
-│       └── page.tsx      # /register
-└── (dashboard)/
-    ├── settings/
-    │   └── page.tsx      # /settings
-    └── profile/
-        └── page.tsx      # /profile
+src/
+└──app/
+    ├── (auth)/
+    │   ├── login/
+    │   │   └── page.tsx      # /login
+    │   └── register/
+    │       └── page.tsx      # /register
+    └── (dashboard)/
+        ├── settings/
+        │   └── page.tsx      # /settings
+        └── profile/
+            └── page.tsx      # /profile
 ```
 
 ## Loading and Error States
@@ -171,14 +173,14 @@ app/
 Create loading and error UI for routes:
 
 ```tsx
-// app/users/loading.tsx
+// src/app/users/loading.tsx
 export default function Loading() {
   return <div>Loading users...</div>;
 }
 ```
 
 ```tsx
-// app/users/error.tsx
+// src/app/users/error.tsx
 'use client';
 
 export default function Error({
